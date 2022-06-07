@@ -1,7 +1,13 @@
+import Link from "next/link";
 
 function Inicio(){
   return(
-    <h1>Titulo</h1>
+    <div>
+      <Link href="/estiloso">
+        Estiloso
+      </Link>
+  
+    </div>
   );
 }
 
