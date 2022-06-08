@@ -1,3 +1,4 @@
+import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
 import { useState } from 'react';
 import Layout from '../components/Layout';
 
@@ -6,10 +7,12 @@ export default function Integracao(){
     const [cliente, setCliente] = useState({});
     const [codigo, setCodigo] = useState(1);
 
-    function obterCliente(){
-        fetch('http://localhost:3000/api/clientes/123')
-            .then(resp=> resp.json())
-            .then(dados=>setCliente(dados))
+    async function obterCliente(){
+        
+        const resp = await fetch(`http://localhost:3000/api/clientes/${codigo}`);
+        const dados = await resp.json();
+        
+        setCliente(dados);
     }
 
     return(
